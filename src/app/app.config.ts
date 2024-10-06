@@ -1,9 +1,18 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
+import { provideRouter, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
 import { provideClientHydration } from '@angular/platform-browser';
 
+const routes: Routes = [
+  { path: '', component: AppComponent },
+  // Add any other necessary routes here
+  { path: '**', redirectTo: '', pathMatch: 'full' } // Wildcard route
+];
+
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration()]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideClientHydration()
+  ]
 };
