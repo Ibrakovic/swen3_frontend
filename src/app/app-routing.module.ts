@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component'; // Import your components for routing
-// Add other components if you have more views
+import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: AppComponent }, // Add your default route or change the component
-  // Add other routes if necessary
-  { path: '**', redirectTo: '', pathMatch: 'full' } // Wildcard route for undefined paths
+  // Setup at least one dummy route if no other routes are defined
+  { path: '', redirectTo: '/', pathMatch: 'full' }
 ];
 
 @NgModule({
