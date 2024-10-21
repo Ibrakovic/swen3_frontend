@@ -16,7 +16,7 @@ RUN npm run build --prod
 FROM nginx:alpine
 
 # Copy the built Angular files from the builder stage to NGINX's HTML directory
-COPY --from=builder /app/dist/frontend/browser /usr/share/nginx/html
+COPY --from=builder /app/dist/frontend /usr/share/nginx/html
 
 # Optional: Add custom NGINX configuration (nginx.conf)
 COPY webserver/nginx.conf /etc/nginx/nginx.conf

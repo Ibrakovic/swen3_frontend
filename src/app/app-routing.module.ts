@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';  // Import the AppComponent
 
 const routes: Routes = [
-  // Setup at least one dummy route if no other routes are defined
-  { path: '', redirectTo: '/', pathMatch: 'full' }
+  { path: '', component: AppComponent },  // Use AppComponent for the root path
+  { path: '**', redirectTo: '' }  // Optional: Redirect unknown paths to root
 ];
 
 @NgModule({

@@ -114,3 +114,23 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+/* CSS Styles für ungültige Eingabefelder */
+input.ng-invalid.ng-touched {
+  border: 2px solid red; /* Rot markiert ungültige Eingaben */
+  background-color: #ffe6e6; /* Hellrot als Hintergrundfarbe */
+}
+
+/* CSS Styles für gültige Eingabefelder */
+input.ng-valid.ng-touched {
+  border: 2px solid green; /* Grün markiert gültige Eingaben */
+  background-color: #e6ffe6; /* Hellgrün als Hintergrundfarbe */
+}
+/* You can add global styles to this file, and also import other style files */
+
+/* Fehlermeldung Styling */
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}

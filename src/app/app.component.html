@@ -1,21 +1,32 @@
+<!-- frontend/src/app/app.component.html -->
 <div class="container">
   <div class="form-container">
     <h2>Registrierung</h2>
 
-    <form>
+    <form #userForm="ngForm" (ngSubmit)="registerUser($event)" method="post">
       <label for="username">Benutzername</label>
-      <input type="text" id="username" placeholder="Gib deinen Benutzernamen ein">
+      <input type="text" id="username" [(ngModel)]="username" name="username" placeholder="Gib deinen Benutzernamen ein" required>
+      <div *ngIf="userForm.form.controls['username']?.invalid && userForm.form.controls['username']" class="error-message">
+        Der Benutzername ist erforderlich.
+      </div>
 
       <label for="email">E-Mail-Adresse</label>
-      <input type="email" id="email" placeholder="Gib deine E-Mail-Adresse ein">
+      <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Gib deine E-Mail-Adresse ein" required>
+      <div *ngIf="userForm.form.controls['email']?.invalid && userForm.form.controls['email']" class="error-message">
+        Die E-Mail-Adresse ist erforderlich.
+      </div>
 
       <label for="password">Passwort</label>
-      <input type="password" id="password" placeholder="Gib dein Passwort ein">
+      <input type="password" id="password" [(ngModel)]="password" name="password" placeholder="Gib dein Passwort ein" required minlength="8">
+      <div *ngIf="userForm.form.controls['password']?.invalid && userForm.form.controls['password']" class="error-message">
+        Das Passwort muss mindestens 8 Zeichen lang sein.
+      </div>
 
-      <button type="submit" (click)="registerUser()">Registrieren</button>
+      <button type="submit" [disabled]="!userForm.form.valid">Registrieren</button>
     </form>
 
-    <p>Hast du schon ein Konto? <a href="#">Hier einloggen</a></p>
+
+    <p>Hast du bereits schon ein Konto? <a href="#">Hier einloggen</a></p>
   </div>
 
   <div class="welcome-container">
@@ -23,3 +34,4 @@
     <p>Ein einfaches und effizientes System zur Verwaltung all deiner Dokumente.</p>
   </div>
 </div>
+
