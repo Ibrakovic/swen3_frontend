@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';  // Import the AppComponent
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent },  // Use AppComponent for the root path
-  { path: '**', redirectTo: '' }  // Optional: Redirect unknown paths to root
+  { path: 'register', component: AppComponent },
+  { path: 'login', component: AppComponent },
+  { path: '', redirectTo: '/register', pathMatch: 'full' },
+  { path: '**', redirectTo: '/register' }
 ];
 
 @NgModule({

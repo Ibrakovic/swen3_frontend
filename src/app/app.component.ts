@@ -1,59 +1,64 @@
+// app.component.ts
 import { Component } from '@angular/core';
-import {FormsModule} from '@angular/forms'; // Import the User interface
-import { AuthService } from './auth.service'; // Import the AuthService
-import { User } from './models/user.model';
-import { ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { User } from './models/user.model';     // Import User für die Registrierung
+import { UserLog } from './models/user.login'; // Import UserLog für das Login
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [
-    FormsModule
-  ],
+  imports: [FormsModule, CommonModule],
   standalone: true
 })
 export class AppComponent {
-
-  @ViewChild('userForm') userForm!: NgForm;
-
   username: string = '';
   email: string = '';
   password: string = '';
-  title: string = 'frontend';
+  isLoginPage: boolean = false;
 
-  constructor(private authService: AuthService) {}  // Inject AuthService
+  constructor(private authService: AuthService, private router: Router) {
+    this.isLoginPage = this.router.url.includes('login');
+  }
 
+  // Registrierungsmethode
   registerUser(event: Event) {
     event.preventDefault();
-    console.log('Formularstatus:', this.userForm.form.valid, this.userForm.form.controls);
-
-
-    if (this.userForm.form.valid) {
-      const user = {
-        username: this.username,
-        email: this.email,
-        password: this.password
-      };
-
-      console.log('Registering user', this.username);
-
-      this.authService.register(user).subscribe({
-        next: response => {
-          console.log('User registered successfully', response);
-        },
-        error: error => {
-          console.error('Error registering user', error);
-        },
-        complete: () => {
-          console.log('Registration request completed');
-        }
-      });
+    if (!this.username || !this.email || !this.password) {
+      console.error('Bitte füllen Sie alle Felder aus.');
+      return;
     }
-    else {
-      console.error('Das Formular ist ungültig.');
+
+    const user: User = { username: this.username, email: this.email, password: this.password };
+    this.authService.register(user).subscribe({
+      next: response => console.log('Nutzer erfolgreich registriert', response),
+      error: error => console.error('Fehler bei der Registrierung', error),
+      complete: () => console.log('Registrierungsanfrage abgeschlossen')
+    });
+  }
+
+  // Login-Methode
+  loginUser(event: Event) {
+    event.preventDefault();
+    if (!this.email || !this.password) {
+      console.error('Bitte E-Mail und Passwort eingeben.');
+      return;
     }
+
+    const user: UserLog = { email: this.email, password: this.password };
+    this.authService.login(user).subscribe({
+      next: response => console.log('Nutzer erfolgreich eingeloggt', response),
+      error: error => console.error('Fehler beim Einloggen', error),
+      complete: () => console.log('Login-Anfrage abgeschlossen')
+    });
+  }
+
+  togglePage() {
+    this.isLoginPage = !this.isLoginPage;
+    const targetRoute = this.isLoginPage ? '/login' : '/register';
+    this.router.navigate([targetRoute]);
   }
 }

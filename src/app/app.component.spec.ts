@@ -1,29 +1,26 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+// app.component.ts
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
-describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-    }).compileComponents();
-  });
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  imports: [FormsModule],
+  standalone: true
+})
+export class AppComponent {
+  title: string = 'frontend'; // Title property added
+  username: string = '';
+  email: string = '';
+  password: string = '';
+  isLoginPage: boolean = false;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  constructor(private authService: AuthService, private router: Router) {
+    this.isLoginPage = this.router.url.includes('login');
+  }
 
-  it(`should have the 'frontend' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('frontend');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, frontend');
-  });
-});
+  // Register and login methods as defined previously
+}

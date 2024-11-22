@@ -1,8 +1,8 @@
-// frontend/src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
+import {UserLog} from '../models/user.login';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,8 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/register`, user);
   }
 
-  login(user: User): Observable<any> {
+  // Login mit dem UserLog-Interface
+  login(user: UserLog): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, user);
   }
 }
