@@ -1,34 +1,8 @@
-<div class="container">
-  <div class="form-container" *ngIf="!isLoginPage">
-    <h2>Registrierung</h2>
-    <form #userForm="ngForm" (ngSubmit)="registerUser($event)" method="post">
-      <label for="username">Benutzername</label>
-      <input type="text" id="username" [(ngModel)]="username" name="username" placeholder="Gib deinen Benutzernamen ein" required>
-      <label for="email">E-Mail-Adresse</label>
-      <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Gib deine E-Mail-Adresse ein" required>
-      <label for="password">Passwort</label>
-      <input type="password" id="password" [(ngModel)]="password" name="password" placeholder="Gib dein Passwort ein" required minlength="8">
-      <button type="submit">Registrieren</button>
-    </form>
-    <p>Hast du bereits schon ein Konto? <a (click)="togglePage()">Hier einloggen</a></p>
-  </div>
-
-  <div class="form-container" *ngIf="isLoginPage">
-    <h2>Login</h2>
-    <form #loginForm="ngForm" (ngSubmit)="loginUser($event)" method="post">
-      <label for="email">E-Mail-Adresse</label>
-      <input type="email" string="email" [(ngModel)]="email" name="email" placeholder="Gib deine E-Mail-Adresse ein" required>
-      <label for="password">Passwort</label>
-      <input type="password" string="password" [(ngModel)]="password" name="password" placeholder="Gib dein Passwort ein" required minlength="8">
-      <button type="submit">Einloggen</button>
-    </form>
-    <p>Kein Konto? <a (click)="togglePage()">Hier registrieren</a></p>
-  </div>
-
-  <div class="welcome-container">
-    <h2 *ngIf="!isLoginPage">Willkommen in unserem Dokumentenmanagementsystem</h2>
-    <h2 *ngIf="isLoginPage">Willkommen zurück!</h2>
-    <p *ngIf="!isLoginPage">Ein einfaches und effizientes System zur Verwaltung all deiner Dokumente.</p>
-    <p *ngIf="isLoginPage">Logge dich ein, um auf dein Dokumentenmanagementsystem zuzugreifen.</p>
-  </div>
+<!-- Buttons werden nur angezeigt, wenn showButtons true ist -->
+<div *ngIf="showButtons">
+  <button (click)="navigateTo('login')">Login</button>
+  <button (click)="navigateTo('register')">Register</button>
 </div>
+
+<!-- RouterOutlet für die Routeninhalte -->
+<router-outlet></router-outlet>

@@ -1,0 +1,126 @@
+/* Container für das Formular */
+form {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Etwas intensiverer Schatten */
+  background-color: #ffffff;
+}
+
+/* Beschriftungen */
+label {
+  font-size: 14px;
+  color: #555;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Fett für Klarheit */
+}
+
+/* Eingabefelder */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Register-Button */
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #28a745; /* Grün wie Bootstrap */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease; /* Weicher Übergang bei Hover */
+}
+
+button:hover {
+  background-color: #218838; /* Dunkleres Grün bei Hover */
+}
+
+/* Link für "Zurück zur Startseite" */
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #007bff; /* Blau wie Bootstrap */
+}
+
+.back-link:hover {
+  text-decoration: underline; /* Unterstreicht den Link beim Hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  form {
+    padding: 20px;
+  }
+}
+
+.back-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #6c757d; /* Grau */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  background-color: #5a6268; /* Dunkleres Grau */
+}
+
+/* Grundstil für alle Eingabefelder */
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Richtig validierte Felder */
+input.ng-valid.ng-touched {
+  border-color: #28a745; /* Grün */
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Grüner Schimmer */
+}
+
+/* Falsch validierte Felder */
+input.ng-invalid.ng-touched {
+  border-color: #dc3545; /* Rot */
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5); /* Roter Schimmer */
+}
+
+/* Label für ungültige Felder */
+label.error {
+  color: #dc3545; /* Rot für Fehler */
+  font-size: 12px;
+  margin-top: -5px;
+  display: block;
+}
+
+/* Erfolgreich validierte Felder */
+label.success {
+  color: #28a745; /* Grün für Erfolg */
+  font-size: 12px;
+  margin-top: -5px;
+  display: block;
+}

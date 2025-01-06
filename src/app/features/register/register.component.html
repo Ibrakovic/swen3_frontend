@@ -1,0 +1,54 @@
+<h2 style="text-align: center;">Register</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+  <!-- Username -->
+  <label for="username">Username:</label>
+  <input
+    id="username"
+    type="text"
+    formControlName="username"
+    [class.invalid]="registerForm.get('username')?.invalid && registerForm.get('username')?.touched"
+  />
+  <div class="error" *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+    <small *ngIf="registerForm.get('username')?.errors?.['required']">Username is required.</small>
+    <small *ngIf="registerForm.get('username')?.errors?.['minlength']">Username must be at least 4 characters.</small>
+  </div>
+
+  <!-- Email -->
+  <label for="email">Email:</label>
+  <input
+    id="email"
+    type="email"
+    formControlName="email"
+    [class.invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+  />
+  <div class="error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+    <small *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</small>
+    <small *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</small>
+  </div>
+
+  <!-- Password -->
+  <label for="password">Password:</label>
+  <input
+    id="password"
+    type="password"
+    formControlName="password"
+    [class.invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+  />
+  <div class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+    <small *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</small>
+    <small *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</small>
+  </div>
+
+  <!-- Register Button -->
+  <button type="submit" [disabled]="registerForm.invalid">Register</button>
+</form>
+
+<!-- Erfolgs- oder Fehlermeldungen -->
+<div *ngIf="successMessage" class="success">
+  {{ successMessage }}
+</div>
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
+
+<button class="back-button" (click)="backToHome()">Back to Home</button>

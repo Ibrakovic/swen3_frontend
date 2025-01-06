@@ -131,6 +131,5 @@ input.ng-valid.ng-touched {
 /* Fehlermeldung Styling */
 .error-message {
   color: red;
-  font-size: 0.9em;
   margin-top: 5px;
 }

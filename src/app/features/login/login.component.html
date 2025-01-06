@@ -1,0 +1,28 @@
+<h2 style="text-align: center;">Login</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <!-- Email -->
+  <label for="email">Email:</label>
+  <input id="email" type="email" formControlName="email" />
+  <div class="error" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+    <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
+    <small *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format.</small>
+  </div>
+
+  <!-- Password -->
+  <label for="password">Password:</label>
+  <input id="password" type="password" formControlName="password" />
+  <div class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+    <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+    <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</small>
+  </div>
+
+  <!-- Login Button -->
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>
+
+<!-- Fehlermeldung -->
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
+
+<button class="back-button" (click)="backToHome()">Back to Home</button>
