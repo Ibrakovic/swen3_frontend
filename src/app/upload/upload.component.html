@@ -1,0 +1,8 @@
+
+
+<div>
+  <h2>Datei hochladen</h2>
+  <input type="file" (change)="onFileChange($event)" />
+  <button (click)="uploadFile()" [disabled]="!selectedFile">Datei hochladen</button>
+  <p *ngIf="fileError" style="color: red;">{{ fileError }}</p>
+</div>

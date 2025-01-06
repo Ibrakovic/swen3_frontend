@@ -1,0 +1,135 @@
+/* Grundlegendes Layout für die Aufteilung in zwei Hälften */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+}
+
+.container {
+  display: flex;
+  max-width: 800px;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 50px auto;  /* Abstand nach oben und unten */
+}
+
+.form-container, .welcome-container {
+  width: 50%;
+  padding: 40px;
+}
+
+.form-container {
+  background-color: white;
+}
+
+.welcome-container {
+  background: linear-gradient(135deg, #3498db, #2980b9); /* Blau statt Lila */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.welcome-container h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.welcome-container p {
+  font-size: 16px;
+  margin-top: 0;
+}
+
+/* Formular-Styling */
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+input {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  transition: border 0.3s ease;
+}
+
+input:focus {
+  border-color: #2980b9; /* Blau statt Lila */
+  background-color: #ffffff;
+  outline: none;
+}
+
+button {
+  padding: 12px;
+  background-color: #2980b9; /* Blau statt Lila */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1f6395; /* Dunkleres Blau beim Hover */
+}
+
+p {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+a {
+  color: #2980b9; /* Blau für Links */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* CSS Styles für ungültige Eingabefelder */
+input.ng-invalid.ng-touched {
+  border: 2px solid red; /* Rot markiert ungültige Eingaben */
+  background-color: #ffe6e6; /* Hellrot als Hintergrundfarbe */
+}
+
+/* CSS Styles für gültige Eingabefelder */
+input.ng-valid.ng-touched {
+  border: 2px solid green; /* Grün markiert gültige Eingaben */
+  background-color: #e6ffe6; /* Hellgrün als Hintergrundfarbe */
+}
+/* You can add global styles to this file, and also import other style files */
+
+/* Fehlermeldung Styling */
+.error-message {
+  color: red;
+  margin-top: 5px;
+}

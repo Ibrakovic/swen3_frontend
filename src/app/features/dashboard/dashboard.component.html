@@ -1,0 +1,31 @@
+<div class="dashboard-container">
+  <h1>Dashboard</h1>
+
+  <!-- Datei-Upload -->
+  <div class="upload-section">
+    <h2>Upload File</h2>
+    <form [formGroup]="uploadForm" (ngSubmit)="onUpload()">
+      <label for="file">File:</label>
+      <input
+        id="file"
+        type="file"
+        (change)="onFileSelected($event)"
+      />
+      <button type="submit" [disabled]="uploadForm.invalid">Upload</button>
+    </form>
+    <pre>{{ uploadSuccessMessage | json }}</pre>
+  </div>
+
+  <!-- Dokument-Suche -->
+  <div class="search-section">
+    <h2>Search Document by ID</h2>
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+      <label for="searchId">Document ID:</label>
+      <input id="searchId" formControlName="documentId" type="number" />
+      <button type="submit" [disabled]="searchForm.invalid">Search</button>
+    </form>
+    <pre>{{ searchResult | json }}</pre>
+  </div>
+</div>
+
+<button (click)="logout()">Log out</button>
